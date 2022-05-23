@@ -1,9 +1,6 @@
-export const GET_TWEETS = "GET_TWEETS";
+import { BASE_URL, HEADERS } from "../../constants/store";
 
-const BASE_URL = "http://localhost:5000";
-const HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-};
+export const GET_TWEETS = "GET_TWEETS";
 
 export const getTweets = () => {
   return async (dispatch) => {
@@ -25,6 +22,25 @@ export const getTweets = () => {
         type: GET_TWEETS,
         persistedState: persistedState,
       });
+    } catch (err) {
+      alert(err);
+    }
+  };
+};
+
+export const retweet = (tweetId) => {
+  return async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/tweets`, {
+        method: "POST",
+        headers: HEADERS,
+        body: JSON.stringify({ tweetId }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData);
+      }
     } catch (err) {
       alert(err);
     }

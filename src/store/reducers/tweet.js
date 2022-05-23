@@ -4,7 +4,7 @@ const initialState = {
   tweets: [],
 };
 
-const userReducer = (state = initialState, action) => {
+const tweetReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TWEETS:
       return { tweets: action.persistedState };
@@ -13,4 +13,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default tweetReducer;

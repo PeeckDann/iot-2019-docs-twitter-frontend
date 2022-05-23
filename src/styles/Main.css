@@ -383,6 +383,13 @@
 #red-heart {
   color: rgb(255, 64, 64);
 }
+#retweet-number {
+  font-size: 12px;
+  margin-left: 10px;
+}
+#retweet-number::selection {
+  color: rgb(129, 129, 129);
+}
 #like-number {
   font-size: 12px;
   margin-left: 10px;
@@ -395,7 +402,12 @@
   justify-content: center;
   align-items: center;
 }
-#comment-tweet {
+#box-retweet-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#comment-number {
   font-size: 12px;
   margin-left: 10px;
 }
@@ -404,6 +416,6 @@
   justify-content: center;
   align-items: center;
 }
-.comment:hover #comment-tweet {
+.comment:hover #comment-number {
   color: #0099ff;
 }

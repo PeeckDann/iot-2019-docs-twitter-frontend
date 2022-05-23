@@ -16,7 +16,7 @@ const Main = () => {
   return (
     <div id="container-main">
       {tweets.map((tweet) => (
-        <Tweet tweet={tweet} />
+        <Tweet key={tweet.id} tweet={tweet} />
       ))}
     </div>
   );

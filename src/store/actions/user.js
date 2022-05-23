@@ -1,9 +1,6 @@
-export const GET_CURRENT_USER = "GET_CURRENT_USER";
+import { BASE_URL, HEADERS } from "../../constants/store";
 
-const BASE_URL = "http://localhost:5000";
-const HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-};
+export const GET_CURRENT_USER = "GET_CURRENT_USER";
 
 export const getCurrentUser = () => {
   return async (dispatch) => {
