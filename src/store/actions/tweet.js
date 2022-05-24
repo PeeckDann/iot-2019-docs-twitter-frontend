@@ -28,13 +28,42 @@ export const getTweets = () => {
   };
 };
 
-export const retweet = (tweetId) => {
+export const retweet = (tweet) => {
+  console.log({ tweet });
   return async () => {
     try {
       const response = await fetch(`${BASE_URL}/tweets`, {
         method: "POST",
         headers: HEADERS,
-        body: JSON.stringify({ tweetId }),
+        body: JSON.stringify({
+          tweetId: tweet.id,
+          tweetText: tweet.tweetText,
+          media: tweet.media,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData);
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
+};
+
+export const createTweet = ({ tweetText, media }) => {
+  console.log({ tweetText, media });
+
+  return async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/tweets`, {
+        method: "POST",
+        headers: HEADERS,
+        body: JSON.stringify({
+          tweetText,
+          media,
+        }),
       });
 
       if (!response.ok) {

@@ -15,16 +15,26 @@ const Tweet = ({ tweet }) => {
 
   const handleLike = (tweetId) => {
     dispatch(likeActions.likeTweet(tweetId));
+    setTimeout(() => {
+      dispatch(tweetActions.getTweets());
+    }, 200);
   };
 
-  const handleRetweet = (tweetId) => {
-    dispatch(tweetActions.retweet(tweetId));
+  const handleRetweet = (tweet) => {
+    dispatch(tweetActions.retweet(tweet));
+    setTimeout(() => {
+      dispatch(tweetActions.getTweets());
+    }, 200);
   };
 
   return (
     <div id="tweet-box">
       <div id="profile-tweet">
-        <img src="https://robohash.org/amogus" alt="avatar" id="avatar" />
+        <img
+          src={`https://robohash.org/${user.avatar}`}
+          alt="avatar"
+          id="avatar"
+        />
       </div>
 
       <div id="box-tweet">
@@ -32,7 +42,9 @@ const Tweet = ({ tweet }) => {
           <span id="flex-tweet">
             <p id="tweet-name">{user?.username}</p>
             <p id="tweet-id">@{user?.tag}</p>
-            <p id="tweet-date">{new Date(tweet?.createdAt).toISOString()}</p>
+            <p id="tweet-date">
+              {new Date(tweet?.createdAt).toISOString().slice(0, 10)}
+            </p>
           </span>
 
           <span id="span-more">
@@ -40,6 +52,9 @@ const Tweet = ({ tweet }) => {
           </span>
         </div>
 
+        <div>
+          <img src={`https://robohash.org/${tweet.media}`} alt="media" />
+        </div>
         <div id="post-box">
           <p id="text-tweet">{tweet.tweetText}</p>
         </div>
@@ -54,14 +69,13 @@ const Tweet = ({ tweet }) => {
           <div id="box-retweet-number">
             <span
               onClick={() => {
-                handleRetweet(tweet.id);
+                handleRetweet(tweet);
               }}
               className="retweet"
               id="nav-icon-box"
             >
               <AiOutlineRetweet />
             </span>
-            <span id="retweet-number">{tweet.tweets.length}</span>
           </div>
           <div id="box-like-number">
             <span
