@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import { CgMoreAlt } from "react-icons/cg";
 import { FiShare } from "react-icons/fi";
 import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 
 import CommentSection from "./CommentSection";
+import TweetOptions from "./TweetOptions";
 
 import { useSelector, useDispatch } from "react-redux";
 import * as likeActions from "../store/actions/like";
@@ -53,9 +53,7 @@ const Tweet = ({ tweet }) => {
               </p>
             </span>
 
-            <span id="span-more">
-              <CgMoreAlt />
-            </span>
+            <TweetOptions tweetId={tweet.id} />
           </div>
 
           <div>

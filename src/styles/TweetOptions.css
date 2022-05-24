@@ -1,0 +1,46 @@
+.options-container {
+  font-size: 12px;
+  background-color: white;
+  border-radius: 40px;
+  border: black solid 2px;
+  width: 150px;
+  height: 200px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete-tweet {
+  width: 200px;
+  height: 40px;
+  background-color: #f01d4b;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-top: 20px;
+  margin-left: 10px;
+  transition: 0.2s;
+}
+
+.edit-tweet {
+  width: 200px;
+  height: 40px;
+  background-color: #0b3b05;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-top: 20px;
+  margin-left: 10px;
+  transition: 0.2s;
+}

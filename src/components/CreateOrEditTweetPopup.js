@@ -1,25 +1,30 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
-import "../styles/CreateTweetPopup.css";
+import "../styles/CreateOrEditTweetPopup.css";
 
 import { useDispatch } from "react-redux";
 import * as tweetActions from "../store/actions/tweet";
 
-const CreateTweetPopup = () => {
+const CreateOrEditTweetPopup = ({ trigger, tweetId }) => {
   const [tweetText, updateTweetText] = useState("");
   const [media, updateMedia] = useState("");
 
   const dispatch = useDispatch();
 
-  const handleCreateTweet = () => {
-    dispatch(tweetActions.createTweet({ tweetText, media }));
+  const handlePress = () => {
+    if (!tweetId) {
+      dispatch(tweetActions.createTweet({ tweetText, media }));
+    } else {
+      dispatch(tweetActions.editTweet({ tweetId, tweetText, media }));
+    }
+
     setTimeout(() => {
       dispatch(tweetActions.getTweets());
     }, 200);
   };
 
   return (
-    <Popup trigger={<button id="tweet">Tweet</button>} modal nested>
+    <Popup trigger={trigger} modal nested>
       {(close) => (
         <div className="container">
           <button className="close" onClick={close}>
@@ -46,11 +51,11 @@ const CreateTweetPopup = () => {
           <button
             className="create-tweet"
             onClick={() => {
-              handleCreateTweet();
+              handlePress();
               close();
             }}
           >
-            Create Tweet
+            {tweetId ? "Edit" : "Create"} Tweet
           </button>
         </div>
       )}
@@ -58,4 +63,4 @@ const CreateTweetPopup = () => {
   );
 };
 
-export default CreateTweetPopup;
+export default CreateOrEditTweetPopup;

@@ -72,3 +72,43 @@ export const createTweet = ({ tweetText, media }) => {
     }
   };
 };
+
+export const editTweet = ({ tweetId, tweetText, media }) => {
+  return async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/tweets/${tweetId}`, {
+        method: "PUT",
+        headers: HEADERS,
+        body: JSON.stringify({
+          tweetText,
+          media,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData);
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
+};
+
+export const deleteTweet = (tweetId) => {
+  return async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/tweets/${tweetId}`, {
+        method: "DELETE",
+        headers: HEADERS,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData);
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
+};

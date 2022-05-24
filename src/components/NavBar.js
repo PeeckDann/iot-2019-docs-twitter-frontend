@@ -11,7 +11,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { RiFileList2Line, RiContactsBookLine } from "react-icons/ri";
 import { CgMoreO, CgMoreAlt } from "react-icons/cg";
 
-import CreateTweetPopup from "./CreateTweetPopup";
+import CreateOrEditTweetPopup from "./CreateOrEditTweetPopup";
 
 import { useSelector, useDispatch } from "react-redux";
 import * as userActions from "../store/actions/user";
@@ -73,7 +73,10 @@ const NavBar = () => {
           <p id="nav-title">More</p>
         </button>
 
-        <CreateTweetPopup />
+        <CreateOrEditTweetPopup
+          tweetId={null}
+          trigger={<button id="tweet">Tweet</button>}
+        />
       </div>
 
       <div id="bottom-nav">
