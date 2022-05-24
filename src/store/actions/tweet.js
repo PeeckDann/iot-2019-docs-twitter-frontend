@@ -29,7 +29,6 @@ export const getTweets = () => {
 };
 
 export const retweet = (tweet) => {
-  console.log({ tweet });
   return async () => {
     try {
       const response = await fetch(`${BASE_URL}/tweets`, {
@@ -53,8 +52,6 @@ export const retweet = (tweet) => {
 };
 
 export const createTweet = ({ tweetText, media }) => {
-  console.log({ tweetText, media });
-
   return async () => {
     try {
       const response = await fetch(`${BASE_URL}/tweets`, {
